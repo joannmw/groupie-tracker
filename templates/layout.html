@@ -1,0 +1,41 @@
+<!-- templates/layout.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ .Title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://kit.fontawesome.com/e3d464afcc.js" crossorigin="anonymous"></script>
+    <script src="/static/script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <div class="nav-links">
+                    <li><a href="/" class="home-link" data-tooltip="Discover All Artists">GROUPIE-TRACKER</a></li>
+                </div>
+                <div class=search-form>
+                    <form action="/search" autocomplete="off" method="get" class="search-bar">
+                        <input class="search-input" list="search" id="Search" name="q" placeholder="Search artists by name..."
+                            required />
+                        <button type="submit" class="search-button" data-tooltip="search for artist by name"><i
+                                class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {{ block "content" . }}{{ end }}
+    </main>
+    <div id="tooltip" class="tooltip" style="display: none;">Tooltip text</div>
+    <footer>
+        <p>&copy; 2024 Groupie Trackers</p>
+    </footer>
+</body>
+
+</html>

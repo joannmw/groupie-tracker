@@ -1,0 +1,44 @@
+<!-- templates/error.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://kit.fontawesome.com/e3d464afcc.js" crossorigin="anonymous"></script>
+    <script src="/static/script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <div class="nav-links">
+                    <li><a href="/">Groupie Tracker</a></li>
+                </div>
+                <div>
+                    <form action="/search" autocomplete="off" method="get" class="searchBar">
+                        <input class="sb" list="search" id="Search" name="q" placeholder="Search..." />
+                        <button type="submit"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="error-details">
+            <h1>{{.Status}} - {{.Message}}</h1>
+            <p>Sorry, something went wrong. Please try again later.</p>
+            <a href="/">home page</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Groupie Trackers</p>
+    </footer>
+</body>
+
+</html>

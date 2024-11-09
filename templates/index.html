@@ -1,0 +1,19 @@
+<!-- templates/in.html -->
+{{ define "content" }}
+<div class="hero">
+    <p class="hero-discover">Discover</p>
+    <span class="hero-artists">ARTISTS,</span>
+    <span class="hero-concerts">CONCERTS,</span>
+    <p class="hero-locations">All Around The World</p>
+</div>
+<div class="artist-grid">
+    {{ range .Data }}
+    <div class="artist-card">
+        <img src="{{ .Image }}" alt="{{ .Name }}" class="">
+        <h3>{{ .Name }}</h3>
+        <a href="/artists/?id={{ .ID }}" class="details-button"
+            data-tooltip="Click to see members, concerts, dates etc.">See Details</a>
+    </div>
+    {{ end }}
+</div>
+{{ end }}

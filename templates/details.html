@@ -1,0 +1,68 @@
+{{ define "content" }}
+<div class="artist-details">
+    <div class="artist-image">
+        <img src="{{ .Artist.Image }}" alt="{{ .Artist.Name }}" style="max-width: 100%;">
+    </div>
+    <div class="artist-info">
+        <h1>{{ .Artist.Name }}</h1>
+        <p>Members: {{ range .Artist.Members }}{{ . }}, {{ end }}</p>
+        <p>Created At: {{ .Artist.CreationDate }}</p>
+        <p>First Album: {{ .Artist.FirstAlbum }}</p>
+    </div>
+</div>
+
+<div class="tabs">
+    <button class="tab active" onclick="openTab(event, 'concerts')">Concerts</button>
+    <button class="tab" onclick="openTab(event, 'locations')">Locations</button>
+    <button class="tab" onclick="openTab(event, 'dates')">Dates</button>
+</div>
+
+<div id="concerts" class="tab-content active">
+    <table>
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>Dates</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range $location, $dates := .Concerts.DatesLocation }}
+            <tr>
+                <td>{{ $location }}</td>
+                <td>
+                    {{ range $dates}}
+                    <ul>
+                        <li>{{ . }}</li>
+                    </ul>
+                    {{ end }}
+                </td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
+</div>
+
+<div id="locations" class="tab-content">
+    <table>
+        <tbody>
+            {{ range .Locations.Locations }}
+            <tr>
+                <td>{{ . }}</td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
+</div>
+
+<div id="dates" class="tab-content">
+    <table>
+        <tbody>
+            {{ range .Dates.Dates }}
+            <tr>
+                <td>{{ . }}</td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
+</div>
+{{ end }}

@@ -1,0 +1,14 @@
+{{ define "content" }}
+    <h1>Search Results for "{{.Query}}"</h1>
+    <div class="artist-grid">
+        {{ range .Results }}
+        <div class="artist-card">
+            <img src="{{ .Image }}" alt="{{ .Name }}" class="">
+            <h3>{{ .Name }}</h3>
+            <a href="/artists/?id={{ .ID }}" class="details-button">See Details</a>
+        </div>
+        {{ else }}
+        <p>No matching artists found.</p>
+        {{ end }}
+    </div>
+{{ end }}
